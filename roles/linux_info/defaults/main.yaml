@@ -1,0 +1,17 @@
+---
+
+files:
+  - /etc/hosts
+  - /etc/passwd
+  - /etc/shadow
+  - /etc/sudoers
+  - /etc/group
+
+cmds:
+  - find / -mtime -7
+  - ps -auxww
+  - lsof
+  - find /dev -xdev -type f
+  - find / -type f -iname ".*" -ls
+
+store_server: '192.168.122.10'

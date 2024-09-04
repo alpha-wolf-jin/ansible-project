@@ -1,0 +1,22 @@
+---
+- name: Import a role
+  ansible.builtin.import_role:
+    name: jin.test_01.test
+
+#- name: Pre-Work of Collection Server info
+#  ansible.builtin.include_tasks:
+#    file: pre_work.yaml
+#
+#- name: Collect config files
+#  ansible.builtin.include_tasks:
+#    file: collect_config_files.yaml
+#  loop: "{{ updated_files }}"
+#  loop_control:
+#    loop_var: file
+#
+#- name: Collect the output of commands
+#  ansible.builtin.include_tasks:
+#    file: collect_cmd_output.yaml
+#  loop: "{{ cmds }}"
+#  loop_control:
+#    loop_var: cmd

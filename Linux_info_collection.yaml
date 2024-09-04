@@ -1,0 +1,16 @@
+---
+- name: GIC infor collection
+  hosts: all
+  connection: ssh
+  become: yes
+  gather_facts: true
+
+  tasks:
+ 
+    - name: Import a role
+      ansible.builtin.import_role:
+        name: jin.test_01.test
+
+ # - name: include cis role
+ #   ansible.builtin.include_role: 
+ #     name: linux_info

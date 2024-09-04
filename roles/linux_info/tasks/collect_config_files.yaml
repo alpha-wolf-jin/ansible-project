@@ -1,0 +1,17 @@
+- name: Collect config file
+  block:
+    - name: 'Slurp the {{ file }}'
+      ansible.builtin.slurp:
+        src: "{{ file }}"
+      register: slurp_result
+
+    - name: Save to file
+      ansible.builtin.copy:
+        content: "{{ slurp_result['content'] | b64decode }}"
+        dest: "{{ subdir }}/{{ timestamp }}/files/{{ file | replace('/', ' ') | trim | replace(' ', '_')   }}"
+      delegate_to: "{{ store_server }}"
+        
+  rescue:
+    - name: Fail to collect the content of the file - {{ file }}
+      ansible.builtin.debug:
+        msg: "Fail to collect the content of the file - {{ file }}"
