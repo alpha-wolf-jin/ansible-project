@@ -1,3 +1,4 @@
 ---
 collections:
-  - name: jin.test_01:1.0.0
+  - name: jin.test_01
+    source: https://192.168.122.12/api/galaxy/
