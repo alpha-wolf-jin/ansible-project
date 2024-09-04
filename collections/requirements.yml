@@ -1,4 +1,4 @@
 ---
 collections:
   - name: jin.test
-    source: https://hub01.example.com/api/galaxy/
+    source: https://hub01.example.com/api/galaxy/content/published/
