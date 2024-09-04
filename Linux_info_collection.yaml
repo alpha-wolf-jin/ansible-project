@@ -5,11 +5,14 @@
   become: yes
   gather_facts: true
 
-  tasks:
- 
-    - name: Import a role
-      ansible.builtin.import_role:
-        name: jin.test_01.test
+  roles:
+    - infra.aap_utilities.git_ssh_setup
+
+      #  tasks:
+      # 
+      #    - name: Import a role
+      #      ansible.builtin.import_role:
+      #        name: jin.test_01.test
 
  # - name: include cis role
  #   ansible.builtin.include_role: 
