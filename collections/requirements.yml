@@ -1,4 +1,3 @@
 ---
 collections:
-  - name: infra.aap_utilities
-#  - name: jin.test_01
+  - name: jin.test_01
