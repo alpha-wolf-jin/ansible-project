@@ -6,7 +6,7 @@
   gather_facts: true
 
   roles:
-    - jin.test
+    - jin.test.test
 
       #  tasks:
       # 
