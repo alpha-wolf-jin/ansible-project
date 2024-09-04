@@ -6,7 +6,7 @@
   gather_facts: true
 
   roles:
-    - infra.aap_utilities.git_ssh_setup
+    - jin.test
 
       #  tasks:
       # 
