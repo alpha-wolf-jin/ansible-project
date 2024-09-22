@@ -1,5 +1,5 @@
 ---
-- name: Find instance group for one inventory group
+- name: Verify Team Role
   hosts: localhost
   connection: local
   gather_facts: false
@@ -10,4 +10,3 @@
     - name: Import varaible
       ansible.builtin.include_role: 
         name: verify_team_role
-        
