@@ -7,6 +7,10 @@
   vars:
 
   tasks:
+    - name: Import varaible
+      ansible.builtin.include_vars: 
+        file: expected_team_role.yaml
+
     - name: Get Hosts' information
       uri:
         url: https://192.168.122.10/api/v2/job_templates/?organization=1
@@ -68,3 +72,7 @@
       loop: "{{ team_ids }}"
       loop_control:
         loop_var: team
+
+    - name: Show expected_team_role
+      ansible.builtin.debug:
+        var: expected_team_role

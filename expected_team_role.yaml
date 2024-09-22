@@ -1,6 +1,6 @@
 ---
 
-expected_teams:
+expected_team_role:
   - "name": team_01
     "perm": "Admin",
     "resource_type": "job_template"   

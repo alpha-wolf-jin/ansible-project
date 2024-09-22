@@ -27,4 +27,8 @@
         msg: "{{ item }}"
       loop: "{{ team_roles }}"
 
+    - name: Show Teams' roles list
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ team_roles }}"
       
