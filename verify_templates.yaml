@@ -24,7 +24,7 @@
         msg: "{{ result }}"
 
     - name: Set template ID list
-      ansible.builtin.set_facts:
+      ansible.builtin.set_fact:
         job_template_ids: "{{ result['json']['results'] | map(attribute='id') | list }}"
 
     - name: Show job template ID list
