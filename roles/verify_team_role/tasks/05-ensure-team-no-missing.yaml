@@ -18,3 +18,13 @@
     - name: The job template not in conf list
       ansible.builtin.debug:
         msg: "Missing team from standard list :\n {{ missing_team_name }}"
+
+    - name: Find the missing template
+      ansible.builtin.set_fact:
+        err_list: "{{ err_list|default([]) + [ 'Missing Team from Standard List: ' + item ] }}"
+      loop: "{{ missing_team_name }}"
+
+    - name: The job template not in conf list
+      ansible.builtin.debug:
+        msg: "Missing team from standard list :\n {{ missing_team_name }}"
+      loop: "{{ err_list }}"
