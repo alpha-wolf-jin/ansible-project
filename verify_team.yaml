@@ -2,5 +2,5 @@
 
 - name: Extract job template list
   ansible.builtin.debug:
-    msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) }}"
+    msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) }}"
     #msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('perm', 'equalto', team_role.resource_type) }}"
