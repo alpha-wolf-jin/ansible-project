@@ -1,0 +1,10 @@
+---
+- name: Import varaible
+  ansible.builtin.include_vars: 
+    file: expected_team_role.yaml
+
+- name: Debug
+  ansible.builtin.debug:
+    var: expected_team_role
+
+    
