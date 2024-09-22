@@ -62,7 +62,7 @@
         msg: "{{ item }}"
       loop: "{{ team_ids }}"
 
-      - name: Get Teams' information
+    - name: Get Teams' roles information
       uri:
         url: https://192.168.122.10/api/v2/teams/1/roles/?organization=1
         method: GET
@@ -78,14 +78,14 @@
       ansible.builtin.debug:
         msg: "{{ result }}"
 
-    - name: Set template ID list
+    - name: Set Teams' roles list
       ansible.builtin.set_fact:
-        team_ids: "{{ team_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
+        team_roles: "{{ team_roles|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
 
-    - name: Show job template ID list
+    - name: Show Teams' roles list
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ team_ids }}"
+      loop: "{{ team_roles }}"
 
       
