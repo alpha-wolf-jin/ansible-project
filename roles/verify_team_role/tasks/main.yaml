@@ -1,12 +1,12 @@
 ---
-- name: Initialization
-  ansible.builtin.include_tasks:
-    file: 00-pre-work.yaml
+#- name: Initialization
+#  ansible.builtin.include_tasks:
+#    file: 00-pre-work.yaml
 
 - name: Debug
   ansible.builtin.debug:
     var: expected_team_role
-    
+
 - name: Collect job tempalte information
   ansible.builtin.include_tasks:
     file: 01-collect-job-templates-info.yaml
