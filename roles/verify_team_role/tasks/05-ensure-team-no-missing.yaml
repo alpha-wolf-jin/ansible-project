@@ -4,27 +4,27 @@
     team_name: "{{ team_ids | map(attribute='name') | unique }}"
     configured_team_name: "{{ expected_team_role | map(attribute='name') | unique }}"
 
-- name: Missing workflow job template
+- name: Missing Team 
   block:
-    - name: Find the missing template
+    - name: Find the missing Team
       ansible.builtin.set_fact:
         missing_team_name: "{{ team_name | difference(configured_team_name) }}"
 
-    - name: Ensure all workflow templates configured for {{ team_role.name }}
+    - name: Ensure all Team configured
       ansible.builtin.fail:
         msg: "{{ missing_team_name }}"
       when: missing_team_name | length > 0
   rescue:
-    - name: The job template not in conf list
-      ansible.builtin.debug:
-        msg: "Missing team from standard list :\n {{ missing_team_name }}"
+    #- name: The job template not in conf list
+    #  ansible.builtin.debug:
+    #    msg: "Missing team from standard list :\n {{ missing_team_name }}"
 
-    - name: Find the missing template
+    - name: Find the missing Team
       ansible.builtin.set_fact:
         err_list: "{{ err_list|default([]) + [ 'Missing Team from Standard List: ' + item ] }}"
       loop: "{{ missing_team_name }}"
 
-    - name: The job template not in conf list
+    - name: The Team not in conf list
       ansible.builtin.debug:
         msg: "Missing team from standard list :\n {{ missing_team_name }}"
       loop: "{{ err_list }}"
