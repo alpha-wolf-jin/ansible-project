@@ -78,7 +78,7 @@
     #  ansible.builtin.debug:
     #    msg: "{{ result }}"
 
-    - name: Set Team ID list
+    - name: Set Team ID list    
       ansible.builtin.set_fact:
         team_ids: "{{ team_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
