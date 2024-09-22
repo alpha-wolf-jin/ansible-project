@@ -80,7 +80,7 @@
 
     - name: Set Teams' roles list
       ansible.builtin.set_fact:
-        team_roles: "{{ team_roles|default([]) + [{'id': item.id, 'name': item.name}] }}"
+        team_roles: "{{ team_roles|default([]) + [{'id': item.id, 'name': item.name, 'resource_name': resource_name, 'resource_type': resource_type}] }}"
       loop: "{{ result['json']['results'] }}"
 
     - name: Show Teams' roles list
