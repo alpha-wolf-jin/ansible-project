@@ -1,0 +1,7 @@
+---
+- name: Ensure workflow templated configured
+  ansible.builtin.include_tasks:
+    file: 07-01-ensure-workflow-templates.yaml
+  loop: "{{ expected_team_role }}"
+  loop_control:
+    loop_var: team_role
