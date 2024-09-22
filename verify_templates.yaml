@@ -21,4 +21,4 @@
 
     - name: Show
       ansible.builtin.debug:
-        var: result
+        msg: "{{ result['json']['results']
