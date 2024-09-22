@@ -1,0 +1,5 @@
+---
+
+- name: Extract job template list
+  ansible.builtin.debug:
+    msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) }}"
