@@ -4,3 +4,12 @@
   ansible.builtin.debug:
     msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) }}"
     #msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('perm', 'equalto', team_role.resource_type) }}"
+
+- name: Set tempalte list
+  ansible.builtin.set_fact:
+    configured_template_list: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) | map(attribute='resource_name')}}"
+    #msg: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('perm', 'equalto', team_role.resource_type) }}"
+
+- name: Extract job template list
+  ansible.builtin.debug:
+    msg: "{{ configured_template_list }}"
