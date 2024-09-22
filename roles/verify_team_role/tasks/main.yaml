@@ -22,3 +22,7 @@
 - name: Collect team RBAC information
   ansible.builtin.include_tasks:
     file: 04-collect-team-RBAC-information.yaml
+
+- name: Collect team RBAC information
+  ansible.builtin.include_tasks:
+    file: 05-ensure-team-no-missing.yaml
