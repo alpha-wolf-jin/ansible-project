@@ -1,0 +1,20 @@
+---
+- name: Find instance group for one inventory group
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+vars:
+
+tasks:
+    - name: Get Hosts' information
+      uri:
+        url: https://192.168.122.10/api/v2/job_templates/
+        method: GET
+        return_content: true
+        user: "admin"
+        password: "redhat"
+        validate_certs: false
+        force_basic_auth: true
+        status_code: [ 200, 201 ]
+      register: hosts
