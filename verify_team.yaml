@@ -24,7 +24,7 @@
       ansible.builtin.fail:
         msg: "{{ missing_wf_templates }}"
       when: missing_wf_templates | length > 0
-  rescure:
+  rescue:
     - name: The job template not in conf list
       ansible.builtin.debug:
         msg: "Missing workflow tempalte for {{ team_role.name }} with {{ team_role.perm }} :\n {{ missing_wf_templates }}"
