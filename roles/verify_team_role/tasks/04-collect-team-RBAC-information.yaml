@@ -1,0 +1,7 @@
+---
+- name: Show job template ID list
+  ansible.builtin.include_tasks:
+    file: 04-01-collect-team-RBAC-information.yaml
+  loop: "{{ team_ids }}"
+  loop_control:
+    loop_var: team

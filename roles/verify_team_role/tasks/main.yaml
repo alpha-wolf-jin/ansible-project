@@ -15,3 +15,6 @@
   ansible.builtin.include_tasks:
     file: 03-collect-teams-information.yaml
 
+- name: Collect team RBAC information
+  ansible.builtin.include_tasks:
+    file: 04-collect-team-RBAC-information.yaml
