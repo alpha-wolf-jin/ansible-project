@@ -13,7 +13,7 @@
     job_template_name: "{{ job_template_ids | map(attribute='name') }}"
     workflow_job_template_name: "{{ workflow_job_template_ids | map(attribute='name') }}"
 
-- name: The workflow job template not in conf list
+- name: Missing workflow job template
   when: team_role.resource_type == 'workflow_job_template'
   block:
     - name: Debug
@@ -29,8 +29,23 @@
       ansible.builtin.debug:
         msg: "Missing workflow tempalte for {{ team_role.name }} with {{ team_role.perm }} :\n {{ missing_wf_templates }}"
   
-
-- name: The job template not in conf list
-  ansible.builtin.debug:
-    msg: "{{ job_template_name | difference(configured_template_list) }}"
+- name: Missing job template 
   when: team_role.resource_type == 'job_template'
+  block:
+    - name: Debug
+      ansible.builtin.set_fact:
+        missing_templates: "{{ job_template_name | difference(configured_template_list) }}"
+
+    - name: Ensure all templates configured for {{ team_role.name }}
+      ansible.builtin.fail:
+        msg: "{{ missing_templates }}"
+      when: missing_templates | length > 0
+  rescue:
+    - name: The job template not in conf list
+      ansible.builtin.debug:
+        msg: "Missing tempalte for {{ team_role.name }} with {{ team_role.perm }} :\n {{ missing_templates }}"
+  
+#- name: The job template not in conf list
+#  ansible.builtin.debug:
+#    msg: "{{ job_template_name | difference(configured_template_list) }}"
+#  when: team_role.resource_type == 'job_template'
