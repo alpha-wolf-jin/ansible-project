@@ -28,7 +28,7 @@
     - name: The job template not in conf list
       ansible.builtin.debug:
         msg: "Missing workflow tempalte for {{ team_role.name }} with {{ team_role.perm }} :\n {{ missing_wf_templates }}"
-  
+
 - name: Missing job template 
   when: team_role.resource_type == 'job_template'
   block:
