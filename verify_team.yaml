@@ -18,4 +18,4 @@
 
 - name: The job template not in conf list
   ansible.builtin.debug:
-    msg: "{{ job_template_name | difference(configured_template_list) }}""
+    msg: "{{ job_template_name | difference(configured_template_list) }}"
