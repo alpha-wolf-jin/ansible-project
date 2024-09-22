@@ -62,6 +62,13 @@
         msg: "{{ item }}"
       loop: "{{ team_ids }}"
 
+    - name: Show job template ID list
+      ansible.builtin.include_tasks:
+        name: generate_team_roles_data.yaml
+      loop: "{{ team_ids }}"
+      loop_control:
+        loop_var: team
+
     - name: Get Teams' roles information
       uri:
         url: https://192.168.122.10/api/v2/teams/1/roles/
