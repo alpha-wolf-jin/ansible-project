@@ -7,3 +7,8 @@
 - name: Extract {{ team_role.resource_type }} list with {{ team_role.perm }} for {{ team_role.name }}
   ansible.builtin.debug:
     msg: "{{ configured_template_list }}"
+
+
+- name: Extract full job template list
+  ansible.builtin.debug:
+    msg: "{{ job_template_ids | map(attribute='name') }}"
