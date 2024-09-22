@@ -1,22 +1,23 @@
 ---
 
-- name: Set tempalte list
-  ansible.builtin.set_fact:
-    configured_template_list: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) | map(attribute='resource_name')}}"
+#- name: Set tempalte list
+#  ansible.builtin.set_fact:
+#    configured_template_list: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) | map(attribute='resource_name')}}"
 
-- name: Extract {{ team_role.resource_type }} list with {{ team_role.perm }} for {{ team_role.name }}
-  ansible.builtin.debug:
-    msg: "{{ configured_template_list }}"
+#- name: Extract {{ team_role.resource_type }} list with {{ team_role.perm }} for {{ team_role.name }}
+#  ansible.builtin.debug:
+#    msg: "{{ configured_template_list }}"
 
 - name: Extract full template list
   ansible.builtin.set_fact:
+    configured_template_list: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) | map(attribute='resource_name')}}"
     job_template_name: "{{ job_template_ids | map(attribute='name') }}"
     workflow_job_template_name: "{{ workflow_job_template_ids | map(attribute='name') }}"
 
 - name: Missing workflow job template
   when: team_role.resource_type == 'workflow_job_template'
   block:
-    - name: Debug
+    - name: Find the missing template
       ansible.builtin.set_fact:
         missing_wf_templates: "{{ workflow_job_template_name | difference(configured_template_list) }}"
 

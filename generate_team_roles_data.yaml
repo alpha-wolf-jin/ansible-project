@@ -1,6 +1,4 @@
 ---
-
-
     - name: Get Teams' roles information
       uri:
         url: https://192.168.122.10/api/v2/teams/{{ team.id }}/roles/
@@ -13,22 +11,22 @@
         status_code: [ 200, 201 ]
       register: result
 
-    - name: Show output
-      ansible.builtin.debug:
-        msg: "{{ result }}"
+    #- name: Show output
+    #  ansible.builtin.debug:
+    #    msg: "{{ result }}"
 
     - name: Set Teams' roles list
       ansible.builtin.set_fact:
         team_roles: "{{ team_roles|default([]) + [{'name': team.name, 'perm': item.name, 'resource_name': item.summary_fields.resource_name, 'resource_type': item.summary_fields.resource_type}] }}"
       loop: "{{ result['json']['results'] }}"
 
-    - name: Show Teams' roles list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ team_roles }}"
+    #- name: Show Teams' roles list
+    #  ansible.builtin.debug:
+    #    msg: "{{ item }}"
+    #  loop: "{{ team_roles }}"
 
-    - name: Show Teams' roles list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ team_roles }}"
+    #- name: Show Teams' roles list
+    #  ansible.builtin.debug:
+    #    msg: "{{ item }}"
+    #  loop: "{{ team_roles }}"
       
