@@ -23,6 +23,10 @@
   ansible.builtin.include_tasks:
     file: 04-collect-team-RBAC-information.yaml
 
-- name: Collect team RBAC information
+- name: Ensure all teams configred
   ansible.builtin.include_tasks:
     file: 05-ensure-team-no-missing.yaml
+
+- name: Ensure team RBAC configured
+  ansible.builtin.include_tasks:
+    file: 06-ensure-templates.yaml
