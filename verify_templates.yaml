@@ -64,7 +64,7 @@
 
     - name: Get Teams' roles information
       uri:
-        url: https://192.168.122.10/api/v2/teams/1/roles/?organization=1
+        url: https://192.168.122.10/api/v2/teams/1/roles/
         method: GET
         return_content: true
         user: "admin"
