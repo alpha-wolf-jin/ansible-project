@@ -21,4 +21,5 @@
 
     - name: Show
       ansible.builtin.debug:
-        msg: "{{ result['json']['results'] }}"
+        msg: "{{ item }}"
+      loop: "{{ result['json']['results'] }}"
