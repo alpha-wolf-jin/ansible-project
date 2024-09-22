@@ -27,6 +27,10 @@
   ansible.builtin.include_tasks:
     file: 05-ensure-team-no-missing.yaml
 
-- name: Ensure team RBAC configured
+- name: Ensure team RBAC job template configured
   ansible.builtin.include_tasks:
-    file: 06-ensure-templates.yaml
+    file: 06-ensure-job-templates.yaml
+
+- name: Ensure team RBAC workflow template configured
+  ansible.builtin.include_tasks:
+    file: 07-ensure-workflow-templates.yaml
