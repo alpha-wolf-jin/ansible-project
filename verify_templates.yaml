@@ -64,7 +64,7 @@
 
     - name: Show job template ID list
       ansible.builtin.include_tasks:
-        name: generate_team_roles_data.yaml
+        file: generate_team_roles_data.yaml
       loop: "{{ team_ids }}"
       loop_control:
         loop_var: team
