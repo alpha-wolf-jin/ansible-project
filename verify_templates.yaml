@@ -26,4 +26,5 @@
     - name: Show
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ result['json']['results'] | selectattr('organization','equalto','1') }}"
+      loop: loop: "{{ result['json']['results'] | map(attribute='name') }}"
+      #loop: "{{ result['json']['results'] | selectattr('organization','equalto','1') }}"
