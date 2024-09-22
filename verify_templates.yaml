@@ -5,7 +5,7 @@
   gather_facts: false
   
   vars:
-    
+
   tasks:
     - name: Get Hosts' information
       uri:
@@ -17,7 +17,7 @@
         validate_certs: false
         force_basic_auth: true
         status_code: [ 200, 201 ]
-      register: hosts
+      register: result
 
     - name: Show
       ansible.builtin.debug:
