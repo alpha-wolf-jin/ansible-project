@@ -11,18 +11,9 @@
         status_code: [ 200, 201 ]
       register: result
 
-    #- name: Show output
-    #  ansible.builtin.debug:
-    #    msg: "{{ result }}"
-
     - name: Set workflow template ID list
       ansible.builtin.set_fact:
         workflow_job_template_ids: "{{ workflow_job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
       loop_control:
         label: '{{item.name}}'
-
-    #- name: Show job template ID list
-    #  ansible.builtin.debug:
-    #    msg: "{{ item }}"
-    #  loop: "{{ workflow_job_template_ids }}"

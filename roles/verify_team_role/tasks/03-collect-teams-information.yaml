@@ -11,10 +11,6 @@
     status_code: [ 200, 201 ]
   register: result
 
-    #- name: Show output
-    #  ansible.builtin.debug:
-    #    msg: "{{ result }}"
-
 - name: Set Team ID list    
   ansible.builtin.set_fact:
     team_ids: "{{ team_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"

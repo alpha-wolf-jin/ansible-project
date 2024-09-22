@@ -26,6 +26,3 @@
 - name: Ensure team RBAC workflow template configured
   ansible.builtin.include_tasks:
     file: 07-ensure-workflow-templates.yaml
-
-- ansible.builtin.debug:
-    msg: "END"

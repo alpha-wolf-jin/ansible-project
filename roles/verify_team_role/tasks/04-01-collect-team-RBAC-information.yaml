@@ -17,7 +17,3 @@
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{ item.summary_fields.resource_name }} : {{item.name}}'
-
-- name: The Team RBAC
-  ansible.builtin.debug:
-    var: team_roles
