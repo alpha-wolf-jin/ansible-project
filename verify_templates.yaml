@@ -57,13 +57,10 @@
       loop_control:
         label: '{{item.name}}'
 
-    - name: Show job template ID list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ workflow_job_template_ids }}"
-      #loop: "{{ result['json']['results'] | map(attribute='id') }}"
-      #loop: "{{ result['json']['results'] | map(attribute='name', attribute='id') }}"
-      #loop: "{{ result['json']['results'] | selectattr('organization','equalto','1') }}"
+    #- name: Show job template ID list
+    #  ansible.builtin.debug:
+    #    msg: "{{ item }}"
+    #  loop: "{{ workflow_job_template_ids }}"
 
     - name: Get Teams' information
       uri:
