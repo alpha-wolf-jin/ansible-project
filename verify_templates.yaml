@@ -50,7 +50,7 @@
 
     - name: Set template ID list
       ansible.builtin.set_fact:
-        workflow_job_template_ids: "{{ job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
+        workflow_job_template_ids: "{{ workflow_job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
 
     - name: Show job template ID list
