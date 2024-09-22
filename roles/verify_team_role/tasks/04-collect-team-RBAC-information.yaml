@@ -5,3 +5,24 @@
   loop: "{{ team_ids }}"
   loop_control:
     loop_var: team
+
+- name: Extract full template list
+  ansible.builtin.set_fact:
+    team_name: "{{ team_ids | map(attribute='name') | unique }}"
+    configured_team_name: "{{ expected_team_role | map(attribute='name') | unique }}"
+
+
+- name: Missing workflow job template
+  block:
+    - name: Find the missing template
+      ansible.builtin.set_fact:
+        missing_team_name: "{{ team_name | difference(configured_team_name) }}"
+
+    - name: Ensure all workflow templates configured for {{ team_role.name }}
+      ansible.builtin.fail:
+        msg: "{{ missing_team_name }}"
+      when: missing_team_name | length > 0
+  rescue:
+    - name: The job template not in conf list
+      ansible.builtin.debug:
+        msg: "Missing team from standard list :\n {{ missing_team_name }}"
