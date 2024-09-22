@@ -48,9 +48,9 @@
         status_code: [ 200, 201 ]
       register: result
 
-    #- name: Show output
-    #  ansible.builtin.debug:
-    #    msg: "{{ result }}"
+    - name: Show output
+      ansible.builtin.debug:
+        msg: "{{ result }}"
 
     - name: Set template ID list
       ansible.builtin.set_fact:
