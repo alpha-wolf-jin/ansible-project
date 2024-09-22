@@ -1,4 +1,4 @@
 ---
 collections:
   - name: jin.test
-  #- name: ansible.controller
+  - name: ansible.controller
