@@ -68,31 +68,3 @@
       loop: "{{ team_ids }}"
       loop_control:
         loop_var: team
-
-    - name: Get Teams' roles information
-      uri:
-        url: https://192.168.122.10/api/v2/teams/1/roles/
-        method: GET
-        return_content: true
-        user: "admin"
-        password: "redhat"
-        validate_certs: false
-        force_basic_auth: true
-        status_code: [ 200, 201 ]
-      register: result
-
-    - name: Show output
-      ansible.builtin.debug:
-        msg: "{{ result }}"
-
-    - name: Set Teams' roles list
-      ansible.builtin.set_fact:
-        team_roles: "{{ team_roles|default([]) + [{'id': item.id, 'name': item.name, 'resource_name': item.summary_fields.resource_name, 'resource_type': item.summary_fields.resource_type}] }}"
-      loop: "{{ result['json']['results'] }}"
-
-    - name: Show Teams' roles list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ team_roles }}"
-
-      
