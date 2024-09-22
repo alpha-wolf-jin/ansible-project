@@ -18,3 +18,7 @@ tasks:
         force_basic_auth: true
         status_code: [ 200, 201 ]
       register: hosts
+
+    - name: Show the result
+      ansible.builtin.debug:
+        var: result

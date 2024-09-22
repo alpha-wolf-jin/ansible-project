@@ -1,0 +1,7 @@
+{
+    "[ansible]": {
+        "editor.defaultFoldingRangeProvider": "redhat.ansible",
+        "editor.defaultFormatter": "redhat.ansible"
+    },
+    "ansible.python.interpreterPath": "/bin/python3"
+}
