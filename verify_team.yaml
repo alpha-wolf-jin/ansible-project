@@ -11,6 +11,7 @@
 - name: Extract full job template list
   ansible.builtin.set_fact:
     job_template_name: "{{ job_template_ids | map(attribute='name') }}"
+    workflow_job_template_name: "{{ workflow_job_template_ids | map(attribute='name') }}"
 
 - name: Extract full job template list
   ansible.builtin.debug:
