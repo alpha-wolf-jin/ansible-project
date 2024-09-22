@@ -15,10 +15,6 @@
         msg: "{{ missing_team_name }}"
       when: missing_team_name | length > 0
   rescue:
-    #- name: The job template not in conf list
-    #  ansible.builtin.debug:
-    #    msg: "Missing team from standard list :\n {{ missing_team_name }}"
-
     - name: Find the missing Team
       ansible.builtin.set_fact:
         err_list: "{{ err_list|default([]) + [ 'Missing Team from Standard List: ' + item ] }}"
