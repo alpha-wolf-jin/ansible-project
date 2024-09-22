@@ -73,19 +73,19 @@
         status_code: [ 200, 201 ]
       register: result
 
-    - name: Show output
-      ansible.builtin.debug:
-        msg: "{{ result }}"
+    #- name: Show output
+    #  ansible.builtin.debug:
+    #    msg: "{{ result }}"
 
     - name: Set template ID list
       ansible.builtin.set_fact:
         team_ids: "{{ team_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
 
-    - name: Show job template ID list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ team_ids }}"
+    #- name: Show job template ID list
+    #  ansible.builtin.debug:
+    #    msg: "{{ item }}"
+    #  loop: "{{ team_ids }}"
 
     - name: Show job template ID list
       ansible.builtin.include_tasks:
@@ -94,9 +94,9 @@
       loop_control:
         loop_var: team
 
-    - name: Show expected_team_role
-      ansible.builtin.debug:
-        var: expected_team_role
+    #- name: Show expected_team_role
+    #  ansible.builtin.debug:
+    #    var: expected_team_role
 
     - name: Show job template ID list
       ansible.builtin.include_tasks:
