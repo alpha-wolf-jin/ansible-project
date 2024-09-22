@@ -19,6 +19,6 @@ tasks:
         status_code: [ 200, 201 ]
       register: hosts
 
-    - name: Show the result
+    - name: Show
       ansible.builtin.debug:
         var: result
