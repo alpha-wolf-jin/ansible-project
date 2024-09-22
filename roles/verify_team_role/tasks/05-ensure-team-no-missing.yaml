@@ -26,5 +26,5 @@
 
     - name: The Team not in conf list
       ansible.builtin.debug:
-        msg: "Missing team from standard list :\n {{ missing_team_name }}"
+        msg: "{{ item }}"
       loop: "{{ err_list }}"
