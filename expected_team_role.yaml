@@ -1,0 +1,9 @@
+---
+
+expected_teams:
+  - "name": team_01
+    "perm": "Admin",
+    "resource_type": "job_template"   
+  - "name": team_01
+    "perm": "Read",
+    "resource_type": "workflow_job_template"
