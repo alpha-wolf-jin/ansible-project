@@ -80,6 +80,6 @@
     - name: Show job template ID list
       ansible.builtin.include_tasks:
         file: verify_team.yaml
-      loop: "{{ team_roles }}"
+      loop: "{{ expected_team_role }}"
       loop_control:
         loop_var: team_role
