@@ -1,0 +1,14 @@
+---
+- name: Show job template ID list
+  ansible.builtin.include_tasks:
+    file: 06-01-ensure-job-templates.yaml
+  loop: "{{ expected_team_role }}"
+  loop_control:
+    loop_var: team_role
+
+- name: Show job template ID list
+  ansible.builtin.include_tasks:
+    file: 06-02-ensure-workflow-templates.yaml
+  loop: "{{ expected_team_role }}"
+  loop_control:
+    loop_var: team_role
