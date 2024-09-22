@@ -8,7 +8,14 @@
   ansible.builtin.debug:
     msg: "{{ configured_template_list }}"
 
+- name: Extract full job template list
+  ansible.builtin.set_fact:
+    job_template_name: "{{ job_template_ids | map(attribute='name') }}"
 
 - name: Extract full job template list
   ansible.builtin.debug:
-    msg: "{{ job_template_ids | map(attribute='name') }}"
+    msg: "{{ job_template_name }}" 
+
+- name: The job template not in conf list
+  ansible.builtin.set_fact:
+    msg: "{{ job_template_name | difference(configured_template_list) }}""
