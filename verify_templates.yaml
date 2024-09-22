@@ -9,7 +9,7 @@
   tasks:
     - name: Get Hosts' information
       uri:
-        url: https://192.168.122.10/api/v2/job_templates/
+        url: https://192.168.122.10/api/v2/job_templates/?organization==1
         method: GET
         return_content: true
         user: "admin"
@@ -22,4 +22,4 @@
     - name: Show
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ result['json']['results'] | json_query('[name, id]') }}"
+      loop: "{{ result['json']['results'] | selectattr('organization','equalto','1') }}"
