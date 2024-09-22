@@ -19,13 +19,18 @@
         status_code: [ 200, 201 ]
       register: result
 
-    - name: Show
+    - name: Show output
       ansible.builtin.debug:
         msg: "{{ result }}"
 
-    - name: Show
+    - name: Set template ID list
+      ansible.builtin.set_facts:
+        job_template_ids: "{{ result['json']['results'] | map(attribute='id') | list }}"
+
+    - name: Show job template ID list
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ result['json']['results'] | map(attribute='id') }}"
+      loop: "{{ job_template_ids }}"
+      #loop: "{{ result['json']['results'] | map(attribute='id') }}"
       #loop: "{{ result['json']['results'] | map(attribute='name', attribute='id') }}"
       #loop: "{{ result['json']['results'] | selectattr('organization','equalto','1') }}"
