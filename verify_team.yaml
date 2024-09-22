@@ -14,7 +14,7 @@
 
 - name: Extract full job template list
   ansible.builtin.debug:
-    msg: "{{ job_template_name }}"
+    msg: "{{ workflow_job_template_name | difference(configured_template_list) }}"
   when: team_role.resource_type == 'workflow_job_template'
 
 - name: The job template not in conf list
