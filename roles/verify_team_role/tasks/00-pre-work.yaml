@@ -40,5 +40,19 @@
   loop_control:
     loop_var: user
 
+- name: Set Init team_user_list
+  ansible.builtin.set_fact:
+    team_user_list: >
+      "{{ 
+      team_user_list|default([]) 
+          + 
+      [{'team': team, 'user': user_team|selectattr('team', 'equalto', team)|map(attribute='user')|list }] 
+      }}"
+  loop: "{{ user_team | map(attribute='team') | list | unique }}"
+  loop_control:
+    loop_var: team
 
+- name: Set Init team_user_list
+  ansible.builtin.set_fact:
+    msg: "{{ team_user_list }}"
     
