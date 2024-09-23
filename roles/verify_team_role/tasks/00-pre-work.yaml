@@ -13,14 +13,14 @@
 
 - name: Show user team info
   ansible.builtin.debug:
-    msg: "{{ result }}"
+    msg: "{{ result['json']['results'] }}"
 
 - name: Set template ID list
   ansible.builtin.set_fact:
     user_list: "{{ user_list|default([]) + [{'id': item.id, 'name': item.username, }] }}"
   loop: "{{ result['json']['results'] }}"
   loop_control:
-    label: '{{item.name}}'
+    label: '{{item.username}}'
 
 - name: Ensure workflow templated configured
   ansible.builtin.include_tasks:
