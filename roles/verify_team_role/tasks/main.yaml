@@ -23,6 +23,6 @@
   ansible.builtin.include_tasks:
     file: 06-ensure-job-templates.yaml
 
-#- name: Ensure team RBAC workflow template configured
-#  ansible.builtin.include_tasks:
-#    file: 07-ensure-workflow-templates.yaml
+- name: Ensure team RBAC workflow template configured
+  ansible.builtin.include_tasks:
+    file: 07-ensure-workflow-templates.yaml
