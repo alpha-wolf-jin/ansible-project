@@ -15,18 +15,22 @@
     status_code: [ 200, 201 ]
   register: result
 
-- name: Show user team info
-  ansible.builtin.debug:
-    msg: "{{ result['json'] }}"
-    
-- name: Set template ID list
-  ansible.builtin.set_fact:
-    user_list_orig: "{{ user_list_orig|default([]) + [{'id': user.id, 'name': user.name }] }}"
-  when: item.id == org_id
-  loop: "{{ result['json']['results'] }}"
-  loop_control:
-    label: '{{item.name}}'
+- name: Check Organization id is {{ org_id }}
+  when: reulst.count > 0
+  block:
 
-- name: Show user team info
-  ansible.builtin.debug:
-    msg: "{{ user_list_orig }}"
+    - name: Show user team info
+      ansible.builtin.debug:
+        msg: "{{ result['json'] }}"
+    
+    - name: Set template ID list
+      ansible.builtin.set_fact:
+        user_list_orig: "{{ user_list_orig|default([]) + [{'id': user.id, 'name': user.name }] }}"
+      when: item.id == org_id
+      loop: "{{ result['json']['results'] }}"
+      loop_control:
+        label: '{{item.name}}'
+
+    - name: Show user team info
+      ansible.builtin.debug:
+        msg: "{{ user_list_orig }}"
