@@ -5,9 +5,6 @@
   become: yes
   gather_facts: true
 
-  roles:
-    - jin.test.test
-
   tasks:
     - name: Import a role
       ansible.builtin.import_role:
