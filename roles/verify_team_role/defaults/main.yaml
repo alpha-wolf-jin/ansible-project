@@ -20,13 +20,13 @@ expected_team_role:
   #  "resource_type": "job_template"
   #      #"resource_type": "workflow_job_template"
 
-  expected_team_member:
-    - team: team_bb_template_admin
-      user: 
-        - user03-admin
-    - team: team_bb_template_execute
-      user: 
-        - user01-api
-    - team: team_bb_template_read
-      user: 
-        - user02-sso
+expected_team_member:
+  - team: team_bb_template_admin
+    user: 
+      - user03-admin
+  - team: team_bb_template_execute
+    user: 
+      - user01-api
+  - team: team_bb_template_read
+    user: 
+      - user02-sso
