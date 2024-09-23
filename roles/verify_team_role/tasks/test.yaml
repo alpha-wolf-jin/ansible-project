@@ -5,8 +5,15 @@
     configured_user_list: "{{ team_user_list | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
     user_list: "{{ expected_team_member | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
 
+- name: Show team_user_list
+  ansible.builtin.debug: var=team_user_list
+
+- name: Show expected_team_member
+  ansible.builtin.debug: var=expected_team_member
+
 - ansible.builtin.debug: var=team
 
 - ansible.builtin.debug: var=configured_user_list
 
 - ansible.builtin.debug: var=user_list
+

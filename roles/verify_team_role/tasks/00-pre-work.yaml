@@ -39,10 +39,6 @@
   loop_control:
     loop_var: team
 
-- name: Show team_user_list
-  ansible.builtin.debug:
-    msg: "{{ team_user_list }} - {{ expected_team_member }}"
-
 
 - name: Get the team list for each user
   ansible.builtin.include_tasks: test.yaml
