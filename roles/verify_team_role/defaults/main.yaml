@@ -6,13 +6,13 @@ expected_team_role:
   - "name": team_bb_read
     "perm": "Read"
     "resource_type": "job_template"
-  - "name": team_bb_admin
+  - "name": team_bb_template_admin
     "perm": "Admin"
     "resource_type": "job_template"
-  - "name": team_bb_execute
+  - "name": team_bb_template_execute
     "perm": "Execute"
     "resource_type": "job_template"
     #"resource_type": "workflow_job_template"
-  - "name": team_bb_Read
+  - "name": team_bb_template_Read
     "perm": "Read"
     "resource_type": "job_template"
