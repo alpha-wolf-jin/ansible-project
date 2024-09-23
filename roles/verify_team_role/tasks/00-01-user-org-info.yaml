@@ -18,7 +18,7 @@
 - name: Set template ID list
   ansible.builtin.set_fact:
     user_list_orig: "{{ user_list_orig|default([]) + [{'id': user.id, 'name': user.name }] }}"
-  when: item.id == org_id:
+  when: item.id == org_id
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{item.name}}'
