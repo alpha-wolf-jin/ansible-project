@@ -42,11 +42,11 @@
 - name: Show team_user_list
   ansible.builtin.debug:
     msg: "{{ team_user_list }}"
-    
+
 - name: Get the team list for each user
   ansible.builtin.include_tasks:
     file: 00-03-restructure-team-user.yaml
-  loop: "{{ user_team | map(attribute='team') | list | unique }}"
+  loop: "{{ expected_team_member | map(attribute='team') | list | unique }}"
   loop_control:
     loop_var: team
 
