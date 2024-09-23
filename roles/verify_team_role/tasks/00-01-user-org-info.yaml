@@ -16,7 +16,7 @@
   register: result
 
 - name: Check Organization id is {{ org_id }}
-  when: reulst.count > 0
+  when: result.count > 0
   block:
 
     - name: Show user team info
