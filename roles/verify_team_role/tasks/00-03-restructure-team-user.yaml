@@ -2,7 +2,7 @@
 
 - name: Set Init team_user_list
   ansible.builtin.set_fact:
-    team_user_list: "{{ team_user_list|default([]) + [{'team': team.team, 'user': , user_team | selectattr('team', 'equalto', team.team) | map(attribute='resource_name')  }] }}"
+    team_user_list: "{{ team_user_list|default([]) + [{'team': team.team, 'user': user_team|selectattr('team', 'equalto', team.team)|map(attribute='user'|list)  }] }}"
 
 
 - name: Set Init team_user_list
