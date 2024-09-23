@@ -1,4 +1,4 @@
-------
+---
 - name: Show job template ID list
   ansible.builtin.include_tasks:
     file: 08-01-collect-team-user-info.yaml
