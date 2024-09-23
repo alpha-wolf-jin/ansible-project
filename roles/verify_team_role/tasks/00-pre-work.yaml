@@ -42,7 +42,7 @@
 
 - name: Get the team list for each user
   ansible.builtin.include_tasks: test.yaml
-  loop: "{{ expected_team_member | map(attribute='team') | list | unique }}"
+  loop: "{{ team_ids | map(attribute='name') | list | unique }}"
   loop_control:
     loop_var: team
 
