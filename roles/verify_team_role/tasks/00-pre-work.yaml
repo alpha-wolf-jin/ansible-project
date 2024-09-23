@@ -1,5 +1,5 @@
 ---
-- name: Get Hosts' information
+- name: Get user information
   uri:
     url: https://192.168.122.10/api/v2/users/
     method: GET
@@ -21,6 +21,10 @@
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{item.username}}'
+
+- name: Show user team info
+  ansible.builtin.debug:
+    msg: "{{ user_list }}"
 
 - name: Ensure workflow templated configured
   ansible.builtin.include_tasks:
