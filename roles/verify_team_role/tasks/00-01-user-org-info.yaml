@@ -21,7 +21,3 @@
       loop: "{{ result['json']['results'] }}"
       loop_control:
         label: '{{item.name}}'
-
-    - name: Show user team info
-      ansible.builtin.debug:
-        msg: "{{ user_list_orig }}"

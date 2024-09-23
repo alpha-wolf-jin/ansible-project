@@ -18,10 +18,6 @@
   loop_control:
     label: '{{item.username}}'
 
-#- name: Show user team info
-#  ansible.builtin.debug:
-#    msg: "{{ user_list }}"
-
 - name: Select user based on organization
   ansible.builtin.include_tasks:
     file: 00-01-user-org-info.yaml
