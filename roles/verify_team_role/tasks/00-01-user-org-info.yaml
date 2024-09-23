@@ -15,13 +15,15 @@
     status_code: [ 200, 201 ]
   register: result
 
+- name: Show user team info
+  ansible.builtin.debug:
+    msg: "{{ result }}"
+
 - name: Check Organization id is {{ org_id }}
   when: result.count > 0
   block:
 
-    - name: Show user team info
-      ansible.builtin.debug:
-        msg: "{{ result['json'] }}"
+
     
     - name: Set template ID list
       ansible.builtin.set_fact:
