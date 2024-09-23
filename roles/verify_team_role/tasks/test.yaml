@@ -11,6 +11,9 @@
 - name: Show expected_team_member
   ansible.builtin.debug: var=expected_team_member
 
+- name: Show user_team
+  ansible.builtin.debug: var=user_team
+
 - ansible.builtin.debug: var=team
 
 - ansible.builtin.debug: var=configured_user_list
