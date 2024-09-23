@@ -5,6 +5,9 @@
     configured_user_list: "{{ team_user_list | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
     user_list: "{{ expected_team_member | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
 
+- ansible.builtin.debug: var=configured_user_list
+
+- ansible.builtin.debug: var=user_list
 
 - name: Missing user 
   block:
@@ -12,7 +15,9 @@
       ansible.builtin.set_fact:
         missing_user: "{{ user_list | difference(configured_user_list) }}"
 
-    - name: Ensure all job templates configured for {{ team_role.name }}
+    - ansible.builtin.debug: var=missing_user
+
+    - name: Ensure all job templates configured for
       ansible.builtin.fail:
         msg: "{{ missing_user }}"
       when: missing_user | length > 0
