@@ -1,7 +1,7 @@
 ---
 - name: Get Hosts' information
   uri:
-    url: https://192.168.122.10/api/v2/users/?organization=1
+    url: https://192.168.122.10/api/v2/users/{{ user.id }}/teams/
     method: GET
     return_content: true
     user: "admin"
@@ -17,11 +17,3 @@
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{item.name}}'
-
-- name: Ensure workflow templated configured
-  ansible.builtin.include_tasks:
-    file: 00-01-user-teamList.yaml
-  loop: "{{ user_list }}"
-  loop_control:
-    loop_var: user
-    
