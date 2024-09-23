@@ -7,7 +7,6 @@
 
 
 - name: Missing user 
-  when: team_role.resource_type == 'job_template'
   block:
     - name: Debug
       ansible.builtin.set_fact:
