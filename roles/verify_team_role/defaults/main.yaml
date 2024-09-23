@@ -9,4 +9,10 @@ expected_team_role:
   - "name": team_bb_admin
     "perm": "Admin"
     "resource_type": "job_template"
+  - "name": team_bb_execute
+    "perm": "Execute"
+    "resource_type": "job_template"
     #"resource_type": "workflow_job_template"
+  - "name": team_bb_Read
+    "perm": "Read"
+    "resource_type": "job_template"
