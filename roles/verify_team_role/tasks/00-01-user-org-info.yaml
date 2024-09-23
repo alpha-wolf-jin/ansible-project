@@ -1,5 +1,5 @@
 ---
-- name: Get Hosts' information
+- name: Get user organization information
   uri:
     url: https://192.168.122.10/api/v2/users/{{ user.id }}/organizations/
     method: GET
@@ -13,7 +13,7 @@
 
 - name: Show user team info
   ansible.builtin.debug:
-    msg: "{{ result.results }}"
+    msg: "{{ result }}"
     
 - name: Set template ID list
   ansible.builtin.set_fact:
