@@ -13,7 +13,7 @@
 
 - name: Show user team info
   ansible.builtin.debug:
-    msg: "{{ result.results }}"
+    msg: "{{ result }}"
     
 - name: Set template ID list
   ansible.builtin.set_fact:
