@@ -1,10 +1,17 @@
 ---
-  
+- name: Search Standard
+  ansible.builtin.debug:
+    msg: "{{ team_role.name  }} -- {{ team_role.perm }} -- {{ team_role.resource_type }}"
+
 - name: Extract full template list
   ansible.builtin.set_fact:
     configured_template_list: "{{ team_roles | selectattr('name', 'equalto', team_role.name) | selectattr('resource_type', 'equalto', team_role.resource_type) | selectattr('perm', 'equalto', team_role.perm) | map(attribute='resource_name')}}"
     job_template_name: "{{ job_template_ids | map(attribute='name') }}"
 
+- name: Search Result
+  ansible.builtin.debug:
+    msg: "{{ configured_template_list  }}"
+    
 - name: Missing job template 
   when: team_role.resource_type == 'job_template'
   block:
