@@ -27,7 +27,7 @@
     - name: Find the missing job template
       ansible.builtin.set_fact:
         err_list: "{{ err_list|default([]) + [ 'Missing job tempalte for ' + team_role.name + ' with ' + team_role.perm + ' : ' + item ] }}"
-      loop: "{{ job_template_name }}"
+      loop: "{{ missing_templates }}"
 
     - name: The job template not in conf list
       ansible.builtin.debug:
