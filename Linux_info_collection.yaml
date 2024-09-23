@@ -8,11 +8,10 @@
   roles:
     - jin.test.test
 
-      #  tasks:
-      # 
-      #    - name: Import a role
-      #      ansible.builtin.import_role:
-      #        name: jin.test_01.test
+  tasks:
+    - name: Import a role
+      ansible.builtin.import_role:
+        name: cloud_cpe_cyberark.ccp.retrieve_from_cyberark
 
  # - name: include cis role
  #   ansible.builtin.include_role: 
