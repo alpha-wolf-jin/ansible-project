@@ -20,11 +20,9 @@
     msg: "{{ result }}"
 
 - name: Check Organization id is {{ org_id }}
-  when: result.count > 0
+  when: result.json.count > 0
   block:
-
-
-    
+   
     - name: Set template ID list
       ansible.builtin.set_fact:
         user_list_orig: "{{ user_list_orig|default([]) + [{'id': user.id, 'name': user.name }] }}"
