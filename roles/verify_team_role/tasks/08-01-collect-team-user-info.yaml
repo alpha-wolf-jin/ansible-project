@@ -1,0 +1,19 @@
+---
+- name: Get Teams' roles information
+  uri:
+    url: https://192.168.122.10/api/v2/teams/{{ team.id }}/access_list/
+    method: GET
+    return_content: true
+    user: "admin"
+    password: "redhat"
+    validate_certs: false
+    force_basic_auth: true
+    status_code: [ 200, 201 ]
+  register: result
+
+- name: Set Teams' roles list
+  ansible.builtin.set_fact:
+    team_user: "{{ team_user|default([]) + [{'team': team.name, 'user': item.username}] }}"
+  loop: "{{ result['json']['results'] }}"
+  loop_control:
+    label: "{{item.username}}"
