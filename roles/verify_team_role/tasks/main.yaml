@@ -1,4 +1,8 @@
 ---
+- name: Collect team information
+  ansible.builtin.include_tasks:
+    file: 03-collect-teams-information.yaml
+    
 - name: Collect user team information
   ansible.builtin.include_tasks:
     file: 00-pre-work.yaml
