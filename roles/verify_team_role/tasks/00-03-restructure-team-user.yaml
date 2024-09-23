@@ -2,8 +2,8 @@
 
 - name: Extract full template list
   ansible.builtin.set_fact:
-    configured_user_list: "{{ team_user_list | selectattr('name', 'equalto', team) | map(attribute='user') | unique }}"
-    user_list: "{{ expected_team_member | selectattr('name', 'equalto', team) | map(attribute='user') | unique }}"
+    configured_user_list: "{{ team_user_list | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
+    user_list: "{{ expected_team_member | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
 
 
 - name: Missing user 
