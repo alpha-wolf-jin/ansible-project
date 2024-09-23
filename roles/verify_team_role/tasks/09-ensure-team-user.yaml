@@ -2,6 +2,6 @@
 - name: Ensure job templated configured
   ansible.builtin.include_tasks:
     file: 09-01-ensure-job-templates.yaml
-  loop: "{{ expected_team_member | map(attribute='team') | list | unique | first }}"
+  loop: "{{ expected_team_member | map(attribute='team') | list | unique | first | list}}"
   loop_control:
     loop_var: team
