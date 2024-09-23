@@ -1,4 +1,8 @@
 ---
+- name: Show user team info
+  ansible.builtin.debug:
+    msg: "https://192.168.122.10/api/v2/users/{{ user.id }}/organizations/"
+
 - name: Get user organization information
   uri:
     url: https://192.168.122.10/api/v2/users/{{ user.id }}/organizations/
