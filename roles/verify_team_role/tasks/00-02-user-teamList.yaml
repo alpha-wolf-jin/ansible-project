@@ -17,7 +17,7 @@
     
 - name: Set template ID list
   ansible.builtin.set_fact:
-    user_team: "{{ user_team|default([]) + [{'id': item.id, 'name': item.name, }] }}"
+    user_team: "{{ user_team|default([]) + [{'user': user.name, 'team': item.name, }] }}"
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{item.name}}'
