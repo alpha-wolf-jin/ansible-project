@@ -22,14 +22,14 @@
 #  ansible.builtin.debug:
 #    msg: "{{ user_list }}"
 
-- name: Ensure workflow templated configured
+- name: Select user based on organization
   ansible.builtin.include_tasks:
     file: 00-01-user-org-info.yaml
   loop: "{{ user_list }}"
   loop_control:
     loop_var: user
 
-- name: Ensure workflow templated configured
+- name: Get the team list for each user
   ansible.builtin.include_tasks:
     file: 00-02-user-teamList.yaml
   loop: "{{ user_list_orig }}"

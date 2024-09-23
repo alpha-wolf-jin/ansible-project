@@ -1,8 +1,4 @@
 ---
-- name: Show user team info
-  ansible.builtin.debug:
-    msg: "https://192.168.122.10/api/v2/users/{{ user.id }}/organizations/"
-
 - name: Get user organization information
   uri:
     url: https://192.168.122.10/api/v2/users/{{ user.id }}/organizations/
@@ -15,14 +11,9 @@
     status_code: [ 200, 201 ]
   register: result
 
-- name: Show user team info
-  ansible.builtin.debug:
-    msg: "{{ result }}"
-
 - name: Check Organization id is {{ org_id }}
   when: result.json.count > 0
   block:
-   
     - name: Set template ID list
       ansible.builtin.set_fact:
         user_list_orig: "{{ user_list_orig|default([]) + [{'id': user.id, 'name': user.name }] }}"
