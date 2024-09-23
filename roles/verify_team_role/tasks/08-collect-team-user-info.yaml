@@ -7,3 +7,12 @@
     loop_var: team
 
 - ansible.builtin.debug: var=team_user
+
+- name: Set  team_user_list
+  ansible.builtin.set_fact:
+    team_user_list: "{{team_user_list|default([]) + [{'team': team, 'user': team_user|selectattr('team', 'equalto', team)|map(attribute='user')|list }]}}"
+  loop: "{{ team_user | map(attribute='team') | list | unique }}"
+  loop_control:
+    loop_var: team
+
+- ansible.builtin.debug: var=team_user_list
