@@ -1,15 +1,29 @@
 ---
 
-- name: Set Init team_user_list
+- name: Extract full template list
   ansible.builtin.set_fact:
-    team_user_list: >
-      "{{ 
-      team_user_list|default([]) 
-          + 
-      [{'team': team.team, 'user': user_team|selectattr('team', 'equalto', team.team)|map(attribute='user')|list }] 
-      }}"
+    configured_user_list: "{{ team_user_list | selectattr('name', 'equalto', team) | map(attribute='user') | unique }}"
+    user_list: "{{ expected_team_member | selectattr('name', 'equalto', team) | map(attribute='user') | unique }}"
 
 
-- name: Set Init team_user_list
-  ansible.builtin.set_fact:
-    msg: "{{ team_user_list }}"
+- name: Missing user 
+  when: team_role.resource_type == 'job_template'
+  block:
+    - name: Debug
+      ansible.builtin.set_fact:
+        missing_user: "{{ user_list | difference(configured_user_list) }}"
+
+    - name: Ensure all job templates configured for {{ team_role.name }}
+      ansible.builtin.fail:
+        msg: "{{ missing_user }}"
+      when: missing_user | length > 0
+  rescue:
+    - name: Find the missing job template
+      ansible.builtin.set_fact:
+        err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ')' + ' for team (' + team + ')' ] }}"
+      loop: "{{ missing_user }}"
+
+    - name: The job template not in conf list
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ err_list }}"
