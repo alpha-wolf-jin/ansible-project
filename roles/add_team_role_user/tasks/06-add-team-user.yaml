@@ -6,7 +6,7 @@
     controller_password: "redhat"
     user: user03-admin
     #target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
-    #role: member
+    role: member
     organization: 1
     state: present
     validate_certs: false
