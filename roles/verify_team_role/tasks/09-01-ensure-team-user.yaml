@@ -13,7 +13,7 @@
   block:
     - name: Debug
       ansible.builtin.set_fact:
-        missing_user: "{{ exptected_user_list | difference(configured_user_list) }}"
+        missing_user: "{{ exptected_user_list | difference(configured_user_list) | flatten }}"
 
     - ansible.builtin.debug: var=missing_user
 
@@ -25,11 +25,8 @@
     - name: Find the missing job template
       ansible.builtin.set_fact:
         err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from AAP configuration' ] }}"
-      loop: "{{ missing_user | flatten }}"
+      loop: "{{ missing_user }}"
 
-      #ansible.builtin.set_fact:
-      #  err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from AAP Configuration' ] }}"
-      #loop: "{{ missing_user }}"
 
     - name: The job template not in conf list
       ansible.builtin.debug:
