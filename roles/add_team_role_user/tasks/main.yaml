@@ -1,0 +1,6 @@
+- name: Create Team Role
+  ansible.builtin.include_tasks:
+    file: 01-add-team-role.yaml
+  loop: "{{ expected_team_role  }}"
+  loop_control:
+    loop_var: team_role

@@ -1,0 +1,36 @@
+---
+expected_team_role:
+  - "name": ABC-Squad1-Template-Admin
+    "perm": "Admin"
+    "resource_type": "job_template"
+
+  - "name": ABC-Squad1-Template-Execution
+    "perm": "Execute"
+    "resource_type": "job_template"
+
+  - "name": ABC-Squad1-Template-Read
+    "perm": "Read"
+    "resource_type": "job_template"
+
+  - "name": ABC-Squad1-WorkFlowTemplate-Admin
+    "perm": "Admin"
+    "resource_type": "workflow_job_template"
+
+  - "name": ABC-Squad1-WorkFlowTemplate-Execute
+    "perm": "Execute"
+    "resource_type": "workflow_job_template"
+
+  - "name": ABC-Squad1-WorkFlowTemplate-Read
+    "perm": "Read"
+    "resource_type": "workflow_job_template"
+
+expected_team_member:
+  - team: ABC-Squad1-WorkFlowTemplate-Admin
+    user: 
+      - user03-admin
+  - team: ABC-Squad1-WorkFlowTemplate-Execute
+    user: 
+      - user01-api
+  - team: ABC-Squad1-WorkFlowTemplate-Read
+    user: 
+      - user02-sso
