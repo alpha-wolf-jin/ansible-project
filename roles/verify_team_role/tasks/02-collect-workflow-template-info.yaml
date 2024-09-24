@@ -1,19 +1,22 @@
 ---
-    - name: Get Hosts' information
-      uri:
-        url: https://192.168.122.10/api/v2/workflow_job_templates/?organization=1
-        method: GET
-        return_content: true
-        user: "admin"
-        password: "redhat"
-        validate_certs: false
-        force_basic_auth: true
-        status_code: [ 200, 201 ]
-      register: result
+- name: Get workflow job template information
+  ansible.builtin.uri:
+    url: https://192.168.122.10/api/v2/workflow_job_templates/?organization=1
+    method: GET
+    return_content: true
+    user: "admin"
+    password: "redhat"
+    validate_certs: false
+    force_basic_auth: true
+    status_code: [ 200, 201 ]
+  register: result
 
-    - name: Set workflow template ID list
-      ansible.builtin.set_fact:
-        workflow_job_template_ids: "{{ workflow_job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
-      loop: "{{ result['json']['results'] }}"
-      loop_control:
-        label: '{{item.name}}'
+- name: Set workflow template ID list
+  ansible.builtin.set_fact:
+    workflow_job_template_ids: "{{ workflow_job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
+  loop: "{{ result['json']['results'] }}"
+  loop_control:
+    label: '{{item.name}}'
+
+- name: Show job template ID and Name
+  ansible.builtin.debug: var=workflow_job_template_ids

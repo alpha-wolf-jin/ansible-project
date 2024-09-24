@@ -1,6 +1,6 @@
 ---
 - name: Get job_template info based on organization
-  uri:
+  ansible.builtin.uri:
     url: https://{{aap_host}}/api/v2/job_templates/?organization={{org_id}}
     method: GET
     return_content: true

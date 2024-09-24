@@ -2,6 +2,10 @@
 - name: Collect job tempalte information
   ansible.builtin.include_tasks:
     file: 01-collect-job-templates-info.yaml
+
+- name: Collect workflow job tempalte information
+  ansible.builtin.include_tasks:
+    file: 02-collect-workflow-template-info.yaml
     
 - name: Collect team information
   ansible.builtin.include_tasks:
