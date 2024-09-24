@@ -14,10 +14,10 @@
 - name: Collect team RBAC information
   ansible.builtin.include_tasks:
     file: 04-collect-team-RBAC-information.yaml
-    
+
 - name: Collect user team information
   ansible.builtin.include_tasks:
-    file: 08-collect-team-user-info.yaml
+    file: 05-collect-team-user-info.yaml
 
 - name: Collect user team information
   ansible.builtin.include_tasks:
