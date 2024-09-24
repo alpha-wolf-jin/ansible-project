@@ -5,6 +5,6 @@
     controller_username: "Admin"
     controller_password: "redhat"
     team: "{{ team_role.name }}"
-    role: "{{ team_role.perm }}"
+    role: "{{ team_role.perm | lower }}"
     job_templates: "{{ job_template_ids | map(attribute='name') }}"
     state: present
