@@ -24,7 +24,7 @@
   rescue:
     - name: Find the missing job template
       ansible.builtin.set_fact:
-        err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ')' + ' for team (' + team + ')' from AAP Configuration ] }}"
+        err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from AAP Configuration' ] }}"
       loop: "{{ missing_user }}"
 
     - name: The job template not in conf list
