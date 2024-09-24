@@ -1,14 +1,14 @@
 ---
-- name: Extract full template list
+- name: Set configred and expexted teams
   ansible.builtin.set_fact:
-    team_name: "{{ team_ids | map(attribute='name') | unique }}"
-    configured_team_name: "{{ expected_team_role | map(attribute='name') | unique }}"
+    configured_team_name: "{{ team_ids | map(attribute='name') | unique }}"
+    expected_team_name: "{{ expected_team_role | map(attribute='name') | unique }}"
 
 - name: Missing Team 
   block:
     - name: Find the missing Team
       ansible.builtin.set_fact:
-        missing_team_name: "{{ team_name | difference(configured_team_name) }}"
+        missing_team_name: "{{ configured_team_name | difference(expected_team_name) }}"
 
     - name: Ensure all Team configured
       ansible.builtin.fail:
@@ -20,7 +20,7 @@
         err_list: "{{ err_list|default([]) + [ 'Missing Team from Standard List: ' + item ] }}"
       loop: "{{ missing_team_name }}"
 
-    - name: The Team not in conf list
-      ansible.builtin.debug:
-        msg: "{{ item }}"
-      loop: "{{ err_list }}"
+    #- name: The Team not in conf list
+    #  ansible.builtin.debug:
+    #    msg: "{{ item }}"
+    #  loop: "{{ err_list }}"

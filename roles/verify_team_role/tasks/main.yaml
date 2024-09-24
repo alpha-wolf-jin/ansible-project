@@ -19,6 +19,10 @@
   ansible.builtin.include_tasks:
     file: 05-collect-team-user-info.yaml
 
+- name: Ensure all teams configred
+  ansible.builtin.include_tasks:
+    file: 06-ensure-team-no-missing.yaml
+
 - name: Collect user team information
   ansible.builtin.include_tasks:
     file: 09-ensure-team-user.yaml
