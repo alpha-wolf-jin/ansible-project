@@ -5,7 +5,8 @@
     controller_username: "admin"
     controller_password: "redhat"
     target_team: "{{ team_user.team }}"
-    users: "{{ team_user.user | list | flatten }}"
+    users: "{{ item }}"
     role: "member"
     state: present
     validate_certs: false
+  loop: "{{ team_user.user }}"
