@@ -24,7 +24,7 @@
   rescue:
     - name: Find the missing job template
       ansible.builtin.set_fact:
-        err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from standard team member list' ] }}"
+        err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from AAP configuration' ] }}"
       loop: "{{ missing_user | flatten }}"
 
       #ansible.builtin.set_fact:
