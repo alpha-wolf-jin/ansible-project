@@ -1,7 +1,7 @@
 ---
 - name: Show job template ID list
   ansible.builtin.include_tasks:
-    file: 08-01-collect-team-user-info.yaml
+    file: 05-01-collect-team-user-info.yaml
   loop: "{{ team_ids }}"
   loop_control:
     loop_var: team
