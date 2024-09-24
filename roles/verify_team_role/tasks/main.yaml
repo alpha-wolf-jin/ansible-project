@@ -1,4 +1,8 @@
 ---
+- name: Collect job tempalte information
+  ansible.builtin.include_tasks:
+    file: 01-collect-job-templates-info.yaml
+    
 - name: Collect team information
   ansible.builtin.include_tasks:
     file: 03-collect-teams-information.yaml

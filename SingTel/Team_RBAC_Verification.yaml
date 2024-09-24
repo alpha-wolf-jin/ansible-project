@@ -6,6 +6,7 @@
   
   vars:
     org_id: 1
+    aap_host: 192.168.122.10
     
   tasks:
     - name: Import varaible

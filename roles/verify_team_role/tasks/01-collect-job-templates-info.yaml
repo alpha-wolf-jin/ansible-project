@@ -1,7 +1,7 @@
 ---
-    - name: Get Hosts' information
+    - name: Get job_template info based on organization
       uri:
-        url: https://192.168.122.10/api/v2/job_templates/?organization=1
+        url: https://{{aap_host}}/api/v2/job_templates/?organization={{org_id}}
         method: GET
         return_content: true
         user: "admin"
@@ -11,7 +11,7 @@
         status_code: [ 200, 201 ]
       register: result
 
-    - name: Set template ID list
+    - name: Set template ID & Name list
       ansible.builtin.set_fact:
         job_template_ids: "{{ job_template_ids|default([]) + [{'id': item.id, 'name': item.name}] }}"
       loop: "{{ result['json']['results'] }}"
