@@ -1,7 +1,7 @@
 ---
 - name: Get Teams' roles information
   uri:
-    url: https://192.168.122.10/api/v2/teams/{{ team.id }}/roles/
+    url: https://{{aap_host}}/api/v2/teams/{{ team.id }}/roles/
     method: GET
     return_content: true
     user: "admin"

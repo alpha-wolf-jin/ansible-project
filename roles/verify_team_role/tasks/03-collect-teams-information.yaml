@@ -17,3 +17,6 @@
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{item.name}}'
+
+- name: Show Tean ID and Name
+  ansible.builtin.debug: var=team_ids

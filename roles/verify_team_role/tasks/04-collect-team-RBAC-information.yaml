@@ -5,3 +5,6 @@
   loop: "{{ team_ids }}"
   loop_control:
     loop_var: team
+
+- name: Show Team Roles
+  ansible.builtin.debug: var=team_roles
