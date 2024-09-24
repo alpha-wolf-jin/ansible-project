@@ -4,7 +4,7 @@
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    target_team: "{{ team_user.team }}"
+    team: "{{ team_user.team }}"
     user: "{{ item }}"
     role: "member"
     state: present
