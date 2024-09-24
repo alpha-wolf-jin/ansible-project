@@ -1,11 +1,11 @@
 ---
-- name: Create Team Job Template
+- name: Create Team User
   ansible.controller.role:
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    team: "{{ team_user.team }}"
     user: "{{ item }}"
+    target_team: "{{ team_user.team }}"
     role: "member"
     state: present
     validate_certs: false
