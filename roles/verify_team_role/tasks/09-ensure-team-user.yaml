@@ -3,6 +3,7 @@
   ansible.builtin.include_tasks:
     file: test.yaml
     #file: 09-01-ensure-team-user.yaml
-  loop: "{{ expected_team_member | map(attribute='team') | list | unique | first | list}}"
+  loop: 
+    - "{{ expected_team_member | map(attribute='team') | list | unique | first }}"
   loop_control:
     loop_var: team
