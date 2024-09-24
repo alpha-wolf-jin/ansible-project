@@ -1,0 +1,11 @@
+---
+- name: Create Team Job Template
+  ansible.controller.role:
+    controller_host: "{{ aap_host }}"
+    controller_username: "admin"
+    controller_password: "redhat"
+    team: "{{ team_role.name }}"
+    role: "{{ team_role.perm | lower }}"
+    workflows: "{{ workflow_job_template_ids | map(attribute='name') }}"
+    state: present
+    validate_certs: false
