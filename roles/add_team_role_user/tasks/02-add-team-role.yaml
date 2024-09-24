@@ -1,0 +1,8 @@
+---
+- name: Show item
+  ansible.builtin.debug: var=team_role
+
+- name: Create Team Role Job Template
+  ansible.builtin.include_tasks:
+    file: 03-add-team-job-template.yaml
+  when: team_role.resource_type == 'job_template'
