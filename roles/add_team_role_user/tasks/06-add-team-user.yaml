@@ -9,25 +9,15 @@
     state: present
     validate_certs: false
 
-- name: Create User 
-  ansible.controller.user:
-    controller_host: "{{ aap_host }}"
-    controller_username: "admin"
-    controller_password: "redhat"
-    username: "user03-admin"
-    organization: 1
-    state: present
-    validate_certs: false
-
 - name: Create Team User
   ansible.controller.role:
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    #user: user03-admin
-    #target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
+    user: user03-admin
+    target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
     role: member
-    team: "ABC-Squad1-WorkFlowTemplate-Admin"
+    #team: "ABC-Squad1-WorkFlowTemplate-Admin"
     organization: 1
     state: present
     validate_certs: false
