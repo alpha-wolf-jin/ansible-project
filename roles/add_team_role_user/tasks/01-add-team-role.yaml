@@ -1,3 +1,0 @@
----
-- name: Show item
-  ansible.builtin.debug: var=team_role

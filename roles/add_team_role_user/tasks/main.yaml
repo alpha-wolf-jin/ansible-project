@@ -1,28 +1,16 @@
-<<<<<<< HEAD
 ---
-- name: Collect Template Info
+- name: Collect Job Template Info
   ansible.builtin.include_tasks:
-    file: 01-collection-template-info.yaml
+    file: 01-collection-job-template-info.yaml
+
+- name: Collect Job Template Info
+  ansible.builtin.include_tasks:
+    file: 02-collection-workflow-template-info.yaml
 
 - name: Create Team Role
   ansible.builtin.include_tasks:
-    file: 02-add-team-role.yaml
+    file: 03-add-team-role.yaml
   loop: "{{ expected_team_role  }}"
   loop_control:
     loop_var: team_role
 
-
-    
-=======
----
-- name: Collect Template Info
-  ansible.builtin.include_tasks:
-    file: 01-collection-template-info.yaml
-
-- name: Create Team Role
-  ansible.builtin.include_tasks:
-    file: 02-add-team-role.yaml
-  loop: "{{ expected_team_role  }}"
-  loop_control:
-    loop_var: team_role
->>>>>>> 714685331d2ee1258ff52ced52dc1d7e6cebe0f1
