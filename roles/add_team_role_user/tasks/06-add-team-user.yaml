@@ -5,7 +5,7 @@
     controller_username: "admin"
     controller_password: "redhat"
     target_team: "{{ team_user.team }}"
-    users: "{{ item }}"
+    user: "{{ item }}"
     role: "member"
     state: present
     validate_certs: false
