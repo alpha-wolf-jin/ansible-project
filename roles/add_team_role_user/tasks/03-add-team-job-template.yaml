@@ -8,3 +8,4 @@
     role: "{{ team_role.perm | lower }}"
     job_templates: "{{ job_template_ids | map(attribute='name') }}"
     state: present
+    validate_certs: false
