@@ -14,3 +14,10 @@
   loop_control:
     loop_var: team_role
 
+- name: Create Team Role
+  ansible.builtin.include_tasks:
+    file: 06-add-team-user.yaml
+  loop: "{{ expected_team_member }}"
+  loop_control:
+    loop_var: team_user
+
