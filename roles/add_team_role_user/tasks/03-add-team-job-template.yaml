@@ -2,7 +2,7 @@
 - name: Create Team Job Template
   ansible.controller.role:
     controller_host: "{{ aap_host }}"
-    controller_username: "Admin"
+    controller_username: "admin"
     controller_password: "redhat"
     team: "{{ team_role.name }}"
     role: "{{ team_role.perm | lower }}"
