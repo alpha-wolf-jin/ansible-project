@@ -2,8 +2,8 @@
 
 - name: Extract full template list
   ansible.builtin.set_fact:
-    configured_user_list: "{{ team_user_list | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
-    exptected_user_list: "{{ expected_team_member | selectattr('team', 'equalto', team) | map(attribute='user') | unique }}"
+    configured_user_list: "{{ team_user_list | selectattr('team', 'equalto', team) | map(attribute='user') | flatten | unique }}"
+    exptected_user_list: "{{ expected_team_member | selectattr('team', 'equalto', team) | map(attribute='user') | flatten | unique }}"
 
 - ansible.builtin.debug: var=configured_user_list
 
@@ -13,7 +13,7 @@
   block:
     - name: Debug
       ansible.builtin.set_fact:
-        missing_user: "{{ exptected_user_list | difference(configured_user_list) | flatten }}"
+        missing_user: "{{ exptected_user_list | difference(configured_user_list) }}"
 
     - ansible.builtin.debug: var=missing_user
 
