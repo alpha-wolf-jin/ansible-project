@@ -14,7 +14,9 @@
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    user: user03-admin
+    users: 
+      - user03-admin
+      - admin
     target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
     role: member
     #team: "ABC-Squad1-WorkFlowTemplate-Admin"
