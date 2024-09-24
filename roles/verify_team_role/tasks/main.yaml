@@ -35,7 +35,7 @@
   ansible.builtin.include_tasks:
     file: 09-ensure-team-user.yaml
 
-- name: The job template not in conf list
+- name: The Missed Configuration
   ansible.builtin.debug:
     msg: "{{ item }}"
   loop: "{{ err_list }}"
