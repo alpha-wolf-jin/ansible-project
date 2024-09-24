@@ -1,4 +1,14 @@
 ---
+- name: Create Team 
+  ansible.controller.team:
+    controller_host: "{{ aap_host }}"
+    controller_username: "admin"
+    controller_password: "redhat"
+    name: "ABC-Squad1-WorkFlowTemplate-Admin"
+    organization: 1
+    state: present
+    validate_certs: false
+
 - name: Create Team User
   ansible.controller.role:
     controller_host: "{{ aap_host }}"
