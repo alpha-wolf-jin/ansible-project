@@ -6,7 +6,7 @@
     controller_password: "redhat"
     user: "{{ item }}"
     target_team: "{{ team_user.team }}"
-    role: "member"
+    role: member
     state: present
     validate_certs: false
   loop: "{{ team_user.user }}"
