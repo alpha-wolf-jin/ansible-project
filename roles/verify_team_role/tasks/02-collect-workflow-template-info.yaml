@@ -1,7 +1,7 @@
 ---
 - name: Get workflow job template information
   ansible.builtin.uri:
-    url: https://192.168.122.10/api/v2/workflow_job_templates/?organization=1
+    url: https://{{aap_host}}/api/v2/workflow_job_templates/?organization={{org_id}}
     method: GET
     return_content: true
     user: "admin"

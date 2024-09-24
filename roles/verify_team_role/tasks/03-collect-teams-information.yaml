@@ -1,7 +1,7 @@
 ---
 - name: Get Teams' information
   uri:
-    url: https://192.168.122.10/api/v2/teams/?organization=1
+    url: https://{{aap_host}}/api/v2/teams/?organization={{org_id}}
     method: GET
     return_content: true
     user: "admin"
