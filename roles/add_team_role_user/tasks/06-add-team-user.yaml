@@ -14,13 +14,11 @@
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    users: 
-      - user03-admin
-      - admin
+    user: "user03-admin"
     target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
     role: member
     #team: "ABC-Squad1-WorkFlowTemplate-Admin"
-    organization: 1
+    #organization: 1
     state: present
     validate_certs: false
   #loop: "{{ team_user.user }}"
