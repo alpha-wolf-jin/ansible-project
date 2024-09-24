@@ -23,7 +23,7 @@
       when: missing_user | length > 0
   rescue:
     - name: Find the missing job template
-            ansible.builtin.set_fact:
+      ansible.builtin.set_fact:
         err_list: "{{ err_list|default([]) + [ 'Missing user (' + item + ') for team (' + team + ') from standard team member list' ] }}"
       loop: "{{ missing_user | flatten }}"
 
