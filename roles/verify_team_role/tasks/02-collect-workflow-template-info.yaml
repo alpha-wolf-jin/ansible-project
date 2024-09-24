@@ -18,5 +18,5 @@
   loop_control:
     label: '{{item.name}}'
 
-- name: Show job template ID and Name
+- name: Show workflow job template ID and Name
   ansible.builtin.debug: var=workflow_job_template_ids
