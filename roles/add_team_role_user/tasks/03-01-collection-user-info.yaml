@@ -13,10 +13,12 @@
 
 - ansible.builtin.debug: var=result
 
-- name: Set Teams' roles list
+- name: Set Teams' Info list
   ansible.builtin.set_fact:
-    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': user.id, 'org': item|selectattr('id', 'equalto', org_id)|map(attribute='name')}] }}"
+    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': item.id, 'org': item.name}] }}"
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{ item.name }} : {{user.name}}'
   when: result.json.count > 0
+
+#selectattr('id', 'equalto', org_id)|
