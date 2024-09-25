@@ -34,3 +34,12 @@ expected_team_member:
   - team: ABC-Squad1-WorkFlowTemplate-Read
     user: 
       - user02-sso
+  - team: ABC-Squad1-Template-Admin
+    user: 
+      - user03-admin
+  - team: ABC-Squad1-Template-Execute
+    user: 
+      - user01-api
+  - team: ABC-Squad1-Template-Read
+    user: 
+      - user02-sso
