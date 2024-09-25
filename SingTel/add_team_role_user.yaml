@@ -11,31 +11,31 @@
     
   tasks:
 
-    - name: Create Team 
-      ansible.controller.team:
-        controller_host: "{{ aap_host }}"
-        controller_username: "admin"
-        controller_password: "redhat"
-        name: "ABC-Squad1-WorkFlowTemplate-Admin"
-        organization: 1
-        state: present
-        validate_certs: false
+    #- name: Create Team 
+    #  ansible.controller.team:
+    #    controller_host: "{{ aap_host }}"
+    #    controller_username: "admin"
+    #    controller_password: "redhat"
+    #    name: "ABC-Squad1-WorkFlowTemplate-Admin"
+    #    organization: 1
+    #    state: present
+    #    validate_certs: false
 
-    - name: Create Team User
-      ansible.controller.role:
-        controller_host: "{{ aap_host }}"
-        controller_username: "admin"
-        controller_password: "redhat"
-        users: user03-admin
-        target_teams: "ABC-Squad1-WorkFlowTemplate-Admin"
-        role: member
-        state: present
-        validate_certs: false
-        #role: admin
-        #team: "ABC-Squad1-WorkFlowTemplate-Admin"
-        #organization: 1
-        #validate_certs: false
+    #- name: Create Team User
+    #  ansible.controller.role:
+    #    controller_host: "{{ aap_host }}"
+    #    controller_username: "admin"
+    #    controller_password: "redhat"
+    #    users: user03-admin
+    #    target_teams: "ABC-Squad1-WorkFlowTemplate-Admin"
+    #    role: member
+    #    state: present
+    #    validate_certs: false
+    #    #role: admin
+    #    #team: "ABC-Squad1-WorkFlowTemplate-Admin"
+    #    #organization: 1
+    #    #validate_certs: false
 
-    #- name: Import varaible
-    #  ansible.builtin.include_role: 
-    #    name: ../roles/add_team_role_user
+    - name: Import varaible
+      ansible.builtin.include_role: 
+        name: ../roles/add_team_role_user

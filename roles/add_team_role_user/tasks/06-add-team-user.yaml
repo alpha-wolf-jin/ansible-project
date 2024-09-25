@@ -4,8 +4,8 @@
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    name: "ABC-Squad1-WorkFlowTemplate-Admin"
-    organization: 1
+    name: "{{ team_user.team }}"
+    organization: "{{ org_id }}"
     state: present
     validate_certs: false
 
@@ -14,13 +14,11 @@
     controller_host: "{{ aap_host }}"
     controller_username: "admin"
     controller_password: "redhat"
-    user: "user03-admin"
-    target_team: "ABC-Squad1-WorkFlowTemplate-Admin"
+    users: "{{ item }}"
+    target_teams: "{{ team_user.team }}"
     role: member
-    #team: "ABC-Squad1-WorkFlowTemplate-Admin"
-    #organization: 1
     state: present
     validate_certs: false
-  #loop: "{{ team_user.user }}"
+  loop: "{{ team_user.user }}"
   #user: user03-admin "{{ item }}"
   #target_team: "{{ team_user.team }}"
