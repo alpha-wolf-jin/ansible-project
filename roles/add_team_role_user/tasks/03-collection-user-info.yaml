@@ -1,0 +1,22 @@
+---
+- name: Get User List
+  ansible.builtin.uri:
+    url: https://{{aap_host}}/api/v2/users
+    method: GET
+    return_content: true
+    user: "admin"
+    password: "redhat"
+    validate_certs: false
+    force_basic_auth: true
+    status_code: [ 200, 201 ]
+  register: result
+
+- name: Set template ID & Name list
+  ansible.builtin.set_fact:
+    user_list: "{{ user_list|default([]) + [{'id': item.id, 'name': item.username}] }}"
+  loop: "{{ result['json']['results'] }}"
+  loop_control:
+    label: '{{item.username}}'
+
+- name: Show user list 
+  ansible.builtin.debug: var=user_list
