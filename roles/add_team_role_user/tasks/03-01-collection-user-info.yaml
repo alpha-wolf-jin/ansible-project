@@ -15,10 +15,14 @@
 
 - name: Set Teams' Info list
   ansible.builtin.set_fact:
-    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': item.id, 'org': item.name}] }}"
+    user_info_all: "{{ user_info_all|default([]) + [{'name': user.name, 'org_id': item.id, 'org': item.name}] }}"
   loop: "{{ result['json']['results'] }}"
   loop_control:
     label: '{{ item.name }} : {{user.name}}'
   when: result.json.count > 0
 
 #selectattr('id', 'equalto', org_id)|
+
+- name: Set Teams' Info list
+  ansible.builtin.set_fact:
+    user_info: "{{ user_info_all | selectattr('org_id', 'equalto', org_id) }}"
