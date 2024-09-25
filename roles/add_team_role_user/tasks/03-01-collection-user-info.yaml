@@ -15,10 +15,8 @@
 
 - name: Set Teams' roles list
   ansible.builtin.set_fact:
-    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': user.id, 'org': item.results|map(attribute='name')}] }}"
-  when: 
-    - item.count > 0
-    - item.results|selectattr('id', 'equalto', org_id)
-  loop: "{{ result['json'] }}"
+    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': user.id, 'org': item|selectattr('id', 'equalto', org_id)|map(attribute='name')}] }}"
+  loop: "{{ result['json']['results'] }}"
   loop_control:
-    label: '{{ item.results.name }} : {{user.name}}'
+    label: '{{ item.name }} : {{user.name}}'
+  when: result.json.count > 0
