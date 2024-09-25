@@ -11,3 +11,4 @@
   ansible.builtin.include_tasks:
     file: 05-add-team-workflow-template.yaml
   when: team_role.resource_type == 'workflow_job_template'
+

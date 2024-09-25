@@ -27,3 +27,6 @@
   loop: "{{ user_list }}"
   loop_control:
     loop_var: user
+
+- name: Show item
+  ansible.builtin.debug: var=user_info

@@ -1,0 +1,22 @@
+---
+- name: Get User' information
+  uri:
+    url: https://{{aap_host}}/api/v2/users/{{ user.id }}/organizations/
+    method: GET
+    return_content: true
+    user: "admin"
+    password: "redhat"
+    validate_certs: false
+    force_basic_auth: true
+    status_code: [ 200, 201 ]
+  register: result
+
+- name: Set Teams' roles list
+  ansible.builtin.set_fact:
+    user_info: "{{ user_info|default([]) + [{'name': user.name, 'id': user.id, 'org': item.results|map(attribute='name')}] }}"
+  when: 
+    - item.count > 0
+    - item.results|selectattr('id', 'equalto', org_id)
+  loop: "{{ result['json'] }}"
+  loop_control:
+    label: '{{ item.results.name }} : {{user.name}}'
