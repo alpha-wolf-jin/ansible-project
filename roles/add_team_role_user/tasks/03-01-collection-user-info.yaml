@@ -11,7 +11,7 @@
     status_code: [ 200, 201 ]
   register: result
 
-- ansible.builtin.debug: var=result
+#- ansible.builtin.debug: var=result
 
 - name: Set Teams' Info list
   ansible.builtin.set_fact:

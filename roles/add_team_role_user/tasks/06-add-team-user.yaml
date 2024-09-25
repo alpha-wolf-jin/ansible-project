@@ -19,6 +19,7 @@
     role: member
     state: present
     validate_certs: false
+  when: user_info | selectattr('name', 'equalto', item)
   loop: "{{ team_user.user }}"
   #user: user03-admin "{{ item }}"
   #target_team: "{{ team_user.team }}"

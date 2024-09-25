@@ -18,8 +18,8 @@
   loop_control:
     label: '{{item.username}}'
 
-- name: Show user list 
-  ansible.builtin.debug: var=user_list
+#- name: Show user list 
+#  ansible.builtin.debug: var=user_list
 
 - name: Show job template ID list
   ansible.builtin.include_tasks:
@@ -28,8 +28,8 @@
   loop_control:
     loop_var: user
 
-- name: Show item
-  ansible.builtin.debug: var=user_info_all
+#- name: Show item
+#  ansible.builtin.debug: var=user_info_all
 
 - name: Set Teams' Info list
   ansible.builtin.set_fact:
