@@ -29,4 +29,11 @@
     loop_var: user
 
 - name: Show item
+  ansible.builtin.debug: var=user_info_all
+
+- name: Set Teams' Info list
+  ansible.builtin.set_fact:
+    user_info: "{{ user_info_all | selectattr('org_id', 'equalto', org_id) }}"
+
+- name: Show item
   ansible.builtin.debug: var=user_info

@@ -23,6 +23,3 @@
 
 #selectattr('id', 'equalto', org_id)|
 
-- name: Set Teams' Info list
-  ansible.builtin.set_fact:
-    user_info: "{{ user_info_all | selectattr('org_id', 'equalto', org_id) }}"
