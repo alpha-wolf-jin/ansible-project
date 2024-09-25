@@ -20,3 +20,10 @@
 
 - name: Show user list 
   ansible.builtin.debug: var=user_list
+
+- name: Show job template ID list
+  ansible.builtin.include_tasks:
+    file: 03-01-collect-user-info.yaml
+  loop: "{{ user_list }}"
+  loop_control:
+    loop_var: user

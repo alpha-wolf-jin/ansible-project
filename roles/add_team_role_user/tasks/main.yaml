@@ -7,9 +7,9 @@
 #  ansible.builtin.include_tasks:
 #    file: 02-collection-workflow-template-info.yaml
 
-- name: Collect Job Template Info
+- name: Collect User Info
   ansible.builtin.include_tasks:
-    file: 02-collection-user-info.yaml
+    file: 03-collection-user-info.yaml
 
 #- name: Create Team Role
 #  ansible.builtin.include_tasks:
