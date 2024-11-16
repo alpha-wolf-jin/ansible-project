@@ -1,5 +1,3 @@
 ---
 collections:
-  - name: jin.test
-  - name: cloud_cpe_cyberark.ccp
   - name: ansible.controller
